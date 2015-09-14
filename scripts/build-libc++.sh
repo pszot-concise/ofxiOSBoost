@@ -293,7 +293,7 @@ buildBoostForIPhoneOS()
     echo "To see status in realtime check:"
     echo " ${LOG}"
     echo "Please stand by..."
-    ./bjam -j${PARALLEL_MAKE} --build-dir=iphonesim-build -sBOOST_BUILD_USER_CONFIG=$BOOST_SRC/tools/build/example/user-config.jam --stagedir=iphonesim-build/stage --toolset=darwin-${IPHONE_SDKVERSION}~iphonesim architecture=x86 target-os=iphone variant=release macosx-version=iphonesim-${IPHONE_SDKVERSION} link=static stage > "${LOG}" 2>&1
+    ./bjam -j${PARALLEL_MAKE} --build-dir=iphonesim-build -sBOOST_BUILD_USER_CONFIG=$BOOST_SRC/tools/build/example/user-config.jam --stagedir=iphonesim-build/stage --toolset=darwin-${IPHONE_SDKVERSION}~iphonesim cxxflags="-miphoneos-version-min=7.0" architecture=x86 target-os=iphone variant=release macosx-version=iphonesim-${IPHONE_SDKVERSION} link=static stage > "${LOG}" 2>&1
     if [ $? != 0 ]; then 
         tail -n 100 "${LOG}"
         echo "Problem while Building iphone-simulator build - Please check ${LOG}"
